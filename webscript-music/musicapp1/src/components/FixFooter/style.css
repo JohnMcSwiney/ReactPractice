@@ -1,0 +1,61 @@
+.fix-footer{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right:0;
+    
+    padding:10px;
+    background: grey;
+    background: url(./../../assets/footer-bg-1.jpg);
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 115px;
+    transition: height .2s ease-in-out;
+
+    text-align: center;
+
+
+}
+.fix-footer.active{
+    height: calc(100% - 40px);
+}
+
+.slide-up-btn{
+    width: 50px;
+    height:5px;
+    background: white;
+    border-radius: 10px;
+    margin: 5px auto;
+    
+    
+}
+
+.navigation-menu{
+    width: 80%;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right:auto;
+    padding: 15px 0;
+}
+
+.navigation-menu a{
+    font-size: 12;
+}
+
+.navigation-menu img{
+    width: 15px;
+}
+.miniPlayer{
+    text-align: left;
+}
+.miniPlayer .albumCoverImg{
+    width: 40px;
+    height: 40px;
+    background: grey;
+    border-radius: 50%;
+}

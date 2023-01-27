@@ -1,0 +1,186 @@
+*{
+  margin: 0;
+  padding: 0;
+
+}
+
+
+body{
+  background-color: black;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  color: whitesmoke;
+}
+.flex{
+  display: flex;
+}
+.justify-sb{
+  justify-content: space-between;
+}
+.justify-evenly{
+  justify-content: space-evenly;
+}
+.align-center{
+  align-items: center;
+}
+.bb{
+  box-sizing: border-box;
+}
+.m-20{
+  margin: 20px;
+}
+.mlr-20{
+  margin: 0 20px;
+}
+.mtb-20{
+  margin:20px 0;
+}
+.m-10{
+  margin: 10px;
+}
+.mlr-10{
+  margin: 0 10px;
+}
+.mtb-10{
+  margin:10px 0;
+}
+.m-5{
+  margin: 5px;
+}
+.mlr-5{
+  margin: 0 5px;
+}
+.mtb-5{
+  margin:5px 0;
+}
+.mb-5{
+  margin: 0 0 5px 0;
+}
+.p-20{
+  padding: 20px;
+}
+.plr-20{
+  padding: 0 20px;
+}
+.ptb-20{
+  padding:20px 0;
+}
+.p-10{
+  padding: 10px;
+}
+.plr-10{
+  padding: 0 10px;
+}
+.ptb-10{
+  padding:10px 0;
+}
+.p-5{
+  padding: 5px;
+}
+.plr-5{
+  padding: 0 5px;
+}
+.ptb-5{
+  padding:5px 0;
+}
+.logoPic{
+  max-height: 35px;
+}
+.app-quote{
+  font-size: 20px;
+}
+
+.ul{
+  list-style-type: none;
+}
+
+.d-visibility{
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  position: absolute;
+  opacity: .5;
+  z-index: -1;
+  background: black;
+}
+.miniPlayerControl button{
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.miniPlayerControl button:first-child{
+  margin-right: 15px;
+}
+.miniPlayerControl img{
+  width: 20px;
+}
+.mini-player-info{
+  font-size: 15px;
+
+}
+.mini-player-info p:last-child{
+  color: grey;
+}
+
+.largePlayer .albumCoverImg-Lg{
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 20px auto;
+}
+
+.largePlayer .albumCoverImg-Lg img{
+  width: 280px;
+  height: 280px;
+  position: absolute;
+  border-radius: 25%;
+  background: grey;
+  left:50%;
+  top:50%;
+  transform:  translate(-50%, -50%);
+}
+
+.largePlayerProgress{
+  width: 100%;
+  margin: 20px 0;
+}
+
+.largePlayerProgress input[type=range]{
+  width: 90%;
+  /*-webkit-appearance: none;*/
+  height: 5px;
+  border-radius: 2px;
+  background: linear-gradient(to right, plum 50%, grey 50%);
+}
+
+.audioControls{
+  width: 180px;
+  margin: 0 auto;
+}
+
+.audioControls button{
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.audioControls button:first-child{
+  transform: scaleX(-1);
+}
+.audioControls .playPauseBtn{
+  width:60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background: whitesmoke;
+}
+
+.audioControls .playPauseBtn img{
+  transform:  scaleX(-1);
+  width: 20px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
