@@ -131,14 +131,14 @@ const AudioPlayer = () => {
         // console.log(volumeRef.current.value);
         audioPlayer.current.volume = (volumeRef.current.value / 100);
     }
-
+    const songURL = "http://localhost:3000/testSong.mp3";
     return (
         <div className={styles.container_container}>
         <div className={styles.audioPlayer}>
             {/* https://incompetech.com/music/royalty-free/mp3-royaltyfree/Look Busy.mp3 */}
             {/* https://localhost:3000/C418 - Minecraft - Volume Alpha - 19 Cat.mp3 */}
             {/* http://localhost:3000/testSong.mp3 */}
-            <audio ref={audioPlayer} src="http://localhost:3000/testSong.mp3" preload="metadata"></audio>
+            <audio ref={audioPlayer} src={songURL} preload="metadata"></audio>
 
             <div className={styles.musicInfo}>
                 <div className={styles.albumArt}>
