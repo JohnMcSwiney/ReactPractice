@@ -4,10 +4,9 @@ import { CgArrowLongRightR } from "react-icons/cg"
 import { CgArrowLongLeftR } from "react-icons/cg"
 import { BsPlayCircle } from "react-icons/bs"
 import { BsPauseCircle } from "react-icons/bs"
-import { MdExplicit } from "react-icons/md"
+import { MdExplicit, MdOutlineQueueMusic } from "react-icons/md"
 import { BiVolumeFull, BiVolumeLow, BiVolume, BiVolumeMute } from "react-icons/bi";
-import { FaRegHeart } from "react-icons/fa"
-import { FaHeart } from "react-icons/fa"
+import { FaHeart, FaShareSquare, FaRegHeart } from "react-icons/fa"
 
 // import { allSongInfo } from "info.json";
 // const infoArR  = [];
@@ -36,7 +35,7 @@ const AudioPlayer = () => {
     const [isMuted, setIsMuted] = useState(true);
     //isMuted is totally screwed... but it works. So i'm just gonna leave it as it is <3 sorry if it's confusing (I don't actually know what's happening lol)
     const [prevVolume, updatePrevVol] = useState(0.5);
-    const [isLiked, setIsliked] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
 
     //refrences
     const audioPlayer = useRef(); //reference audio component
@@ -131,6 +130,17 @@ const AudioPlayer = () => {
         // console.log(volumeRef.current.value);
         audioPlayer.current.volume = (volumeRef.current.value / 100);
     }
+    const toggleLiked = () => {
+        setIsLiked(!isLiked);
+    }
+    const shareSong = () => {
+        console.log(`share btn`);
+    }
+    const showQueue = () =>{
+        console.log(`show queue`);
+    }
+        
+
     const songURL = "http://localhost:3000/testSong.mp3";
     return (
         <div className={styles.container_container}>
@@ -187,9 +197,9 @@ const AudioPlayer = () => {
 
             <div className={styles.musicInfo}>
                 <div className={styles.otherBTNs}>
-                    <div className={styles.likeBTN}></div>
-                    <div className={styles.queueBTN}></div>
-                    <div className={styles.shareBTN}></div>
+                    <button className={styles.likeBTN} onClick={toggleLiked}>{isLiked ?  <FaHeart/> : <FaRegHeart/>}</button>
+                    <button className={styles.shareBTN}><FaShareSquare/></button>
+                    <button className={styles.queueBTN}><MdOutlineQueueMusic/></button>
                 </div>
                 <div className={styles.mute_N_vol}>
                     <div className ={styles.muteBTN}>
