@@ -1,0 +1,10 @@
+{
+    "artist": "Spoon",
+    "title": "Do You",
+    "content_type": "audio/mp3",
+    "duration": 212,
+    "hot-spot_start": 44,
+    "genre": "rock",
+    "genres": ["rock", "alternative"],
+    "explicit": false
+}

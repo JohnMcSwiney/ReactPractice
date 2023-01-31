@@ -1,0 +1,10 @@
+{
+    "artist": "Ice Cube",
+    "title": "It Was A Good Day",
+    "content_type": "audio/mp3",
+    "duration": 280,
+    "hot-spot_start": 23,
+    "genre": "rap",
+    "genres": ["rap", "feel_good"],
+    "explicit": true
+}

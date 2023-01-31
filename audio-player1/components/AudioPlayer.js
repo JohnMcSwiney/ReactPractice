@@ -4,8 +4,28 @@ import { CgArrowLongRightR } from "react-icons/cg"
 import { CgArrowLongLeftR } from "react-icons/cg"
 import { BsPlayCircle } from "react-icons/bs"
 import { BsPauseCircle } from "react-icons/bs"
+import { MdExplicit } from "react-icons/md"
 import { BiVolumeFull, BiVolumeLow, BiVolume, BiVolumeMute } from "react-icons/bi";
+import { FaRegHeart } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
 
+// import { allSongInfo } from "info.json";
+// const infoArR  = [];
+// const songInfo = allSongInfo.map;
+
+const json = `
+{
+    "artist": "Ice Cube",
+    "title": "It Was A Good Day",
+    "content_type": "audio/mp3",
+    "duration": 280,
+    "hot-spot_start": 23,
+    "genre": "rap",
+    "genres": ["rap", "feel_good"],
+    "explicit": true
+}
+`;
+const obj = JSON.parse(json);
 
 const AudioPlayer = () => {
     //state
@@ -13,8 +33,10 @@ const AudioPlayer = () => {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [volumeLevel, setVolumeLevel] = useState(0);
-    const [isMuted, setIsMuted] = useState(false);
-    const [prevVolume, updatePrevVol] = useState(0.1);
+    const [isMuted, setIsMuted] = useState(true);
+    //isMuted is totally screwed... but it works. So i'm just gonna leave it as it is <3 sorry if it's confusing (I don't actually know what's happening lol)
+    const [prevVolume, updatePrevVol] = useState(0.5);
+    const [isLiked, setIsliked] = useState(false);
 
     //refrences
     const audioPlayer = useRef(); //reference audio component
@@ -41,6 +63,9 @@ const AudioPlayer = () => {
     const togglePlayPause = () => {
         const prevValue = isPlaying;
         setIsPlaying(!prevValue);
+        changeVolumeLevel();
+
+
         if (!prevValue) {
             audioPlayer.current.play();
             animationRef.current = requestAnimationFrame(whilePlaying); //fix this
@@ -55,11 +80,25 @@ const AudioPlayer = () => {
         updatePrevVol(audioPlayer.current.volume);
         setIsMuted(!prevValue);
         if (!prevValue) {
+            console.log(`isMuted ` + isMuted);
+            console.log(`unmuting!`);
+            // console.log(`previous vol: ` + prevVolume);
             audioPlayer.current.volume = prevVolume;
             setVolumeLevel(audioPlayer.current.volume);
+            volumeRef.current.value = (prevVolume * 100);
+            // console.log(`current vol:` + (volumeLevel * 1000));
+
         } else {
+            console.log(`isMuted ` + isMuted);
+            console.log(`muting!`);
+            // console.log(`previous vol: ` + volumeLevel);
             audioPlayer.current.volume = 0;
             setVolumeLevel(0);
+            volumeRef.current.value = 0;
+            // console.log(`current vol:` + volumeLevel);
+
+            
+
         }
     }
 
@@ -69,7 +108,12 @@ const AudioPlayer = () => {
         animationRef.current = requestAnimationFrame(whilePlaying); //potential memory leak
     }
 
-
+    const printInfo = () => {
+        console.log(obj.artist);
+        console.log(obj.title);
+        console.log(obj.genre);
+        console.log(obj.explicit);
+    }
 
     const changeRange = () => {
         audioPlayer.current.currentTime = progressBar.current.value;
@@ -82,9 +126,10 @@ const AudioPlayer = () => {
     }
 
     const changeVolumeLevel = () => {
-        console.log(audioPlayer.current.volume);
-        console.log(volumeRef.current.value);
-        audioPlayer.current.volume = (volumeRef.current.value / 1000);
+        setIsMuted(true);
+        // console.log(audioPlayer.current.volume);
+        // console.log(volumeRef.current.value);
+        audioPlayer.current.volume = (volumeRef.current.value / 100);
     }
 
     return (
@@ -93,16 +138,24 @@ const AudioPlayer = () => {
             {/* https://incompetech.com/music/royalty-free/mp3-royaltyfree/Look Busy.mp3 */}
             {/* https://localhost:3000/C418 - Minecraft - Volume Alpha - 19 Cat.mp3 */}
             {/* http://localhost:3000/testSong.mp3 */}
-            <audio ref={audioPlayer} src="http://localhost:3000/MindSpring MemoriesNeedlejusticeSantosha.mp3" preload="metadata"></audio>
+            <audio ref={audioPlayer} src="http://localhost:3000/testSong.mp3" preload="metadata"></audio>
 
             <div className={styles.musicInfo}>
                 <div className={styles.albumArt}>
                     
+                    <img src="http://localhost:3000/cover.jpg"></img>
                 </div>
+                
+
                 <div className={styles.songName}>
-                    <h2> Boom, Boom, Boom, Boom !!</h2>
-                    <p>Vengaboys</p>
+                    <div className={styles.marquee}><p>{obj.title}</p></div> 
+                    <div className={styles.explicitTag}>{obj.explicit ? <MdExplicit/> : <p/>}</div>
+                    <div className={styles.songArtist}><p>{obj.artist}</p></div>
+                    
+                    
+                    
                 </div>
+                
                 
             </div>
 
@@ -133,19 +186,22 @@ const AudioPlayer = () => {
             </div>
 
             <div className={styles.musicInfo}>
+                <div className={styles.otherBTNs}>
+                    <div className={styles.likeBTN}></div>
+                    <div className={styles.queueBTN}></div>
+                    <div className={styles.shareBTN}></div>
+                </div>
                 <div className={styles.mute_N_vol}>
-                    <div>
+                    <div className ={styles.muteBTN}>
                         <button onClick={toggleMute}>
-                            {isMuted ? <BiVolumeFull /> : <BiVolumeMute />}
+                            {isMuted ? <BiVolumeFull /> : <BiVolumeMute /> }
                         </button>
                     </div>
-                    <div>
+                    <div className ={styles.volSlider}>
                         <input type="range" ref={volumeRef} defaultValue="50" onChange={changeVolumeLevel}></input>
                     </div>
                 </div>
-                <div className={styles.addit_btns}>
-
-                </div>
+                
                 
             </div>
 
