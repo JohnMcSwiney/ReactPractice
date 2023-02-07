@@ -418,7 +418,8 @@
     content: '';
     height: 11px;
     width: var(--seek-before-width);
-    background-color: var(--seek-before-color);
+    /* background-color: #0034c4 ; */
+    background-image: linear-gradient(to right,#0034c4, #8650F4);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     position: absolute;
@@ -434,7 +435,7 @@
     width: 20px;
     border-radius: 50%;
     border: none;
-    background-color: var(--seek-head);
+    background-color: #8650F4;
     cursor: pointer;
     position: relative;
     margin: -4px 0 0 0;

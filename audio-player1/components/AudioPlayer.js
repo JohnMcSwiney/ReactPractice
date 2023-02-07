@@ -140,8 +140,8 @@ const AudioPlayer = () => {
         console.log(`show queue`);
     }
         
-
-    const songURL = "http://localhost:3000/testSong.mp3";
+//https://storage.cloud.google.com/trv_test_music/TroveMusic/country/wavepool_abortion/wavepool_abortion/blood_everywhere/wavepool%20abortion%20-%20wavepool%20abortion%20-%2010%20blood%20everywhere.mp3
+    const songURL = "https://storage.cloud.google.com/trv_test_music/TroveMusic/rap/ice_cube/the_predator/it_was_a_good_day/07_it_was_a_good_day.mp3";
     return (
         <div className={styles.container_container}>
         <div className={styles.audioPlayer}>
